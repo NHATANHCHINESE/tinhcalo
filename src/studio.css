@@ -1,0 +1,187 @@
+/* One broad upper-right light. The shallow sidewall and contact shadow are
+   separate from the diffuse floor shadow so the reading surface stays quiet. */
+:root{
+  /* Reference swatches from hungry.webp: backdrop, plumage, bill and its lower edge. */
+  --pool:#9ed1cd;--plumage:#e7dfd6;--bill:#fdd480;--bill-edge:#ba732f;
+  --page:var(--pool);--ink:#302e2a;--muted:#535954;--surface:#f6f2ec;--soft:#e7e2d9;
+  --line:#d8d2c7;--edge:#9faaa4;--accent:#785018;--accent-strong:#69441b;--input:#fcfaf5;
+  --studio-bg:radial-gradient(ellipse at 94% 3%,#c0e2de 0%,transparent 60%),linear-gradient(216deg,#a1d3d0,#9ecfcb 58%,#95c5c1);
+  --ceramic:radial-gradient(ellipse at 88% 0%,#faf8f4,transparent 70%),linear-gradient(213deg,#f6f3ee,#f1ece5 58%,var(--plumage));
+  --face:inset -2px 3px 4px #fffffff2,inset 2px -4px 7px #9b8e7f3d;
+  --lift:-1px 3px 1px #b5aba1,-2px 5px 4px #405c5845,-7px 12px 17px -6px #35575448,-15px 22px 33px -18px #385c5633;
+  --well:inset -2px 3px 5px #6a645a36,inset 1px -2px 3px #fffcf4ed,-1px 1px 1px #fff9f1b8;
+  --key:radial-gradient(ellipse at 73% 16%,#ffe5a4,var(--bill) 45%,#edb45a 82%,#de9a48);
+  --key-ink:#342815;
+  --key-lift:inset -1px 2px 4px #fff3cac2,inset 2px -3px 5px #ad6e2f47,-1px 3px 1px var(--bill-edge),-3px 5px 5px #584f3d45,-6px 10px 12px -5px #4d605a57;
+  --button-lift:var(--face),-1px 2px 1px #b7aea2,-3px 5px 6px #4b5f552e;
+  --press:inset -1px 1px 3px #fff2d178,-1px 1px 1px #998569,-1px 2px 3px #4b524035;
+  --toast-face:#f8f6ed;--track:#d5d6c9;--rail-edge:#a9afa4;--danger:#813d34;
+}
+:root[data-theme=dark]{
+  --page:#233636;--surface:#394645;--soft:#303e3e;--ink:#f9f3e9;--muted:#cbd3cc;--line:#586660;--edge:#84938e;--accent:#f4cf93;--accent-strong:#ffdb9e;--input:#f6f4ed;
+  --studio-bg:radial-gradient(ellipse at 90% 0%,#415b59,transparent 68%),linear-gradient(210deg,#2d4443,#203331);
+  --ceramic:linear-gradient(218deg,#465351,#3b4846 54%,#333f3e);
+  --face:inset -2px 2px 3px #e4f2e92b,inset 2px -3px 6px #10201e66;
+  --lift:-1px 3px 1px #253330,-2px 5px 5px #06141199,-7px 15px 20px -9px #05171482;
+  --well:inset -2px 2px 5px #101d1a96,inset 1px -2px 3px #d7e5d12b;
+  --button-lift:var(--face),-1px 2px 1px #23332f,-3px 5px 7px #0e1a1859;
+  --toast-face:#394c46;--track:#273532;--rail-edge:#182a25;--danger:#ffc7ba;
+}
+body{min-height:100vh;background:var(--studio-bg);background-attachment:fixed}
+header{background:transparent;border:0;box-shadow:none}
+.topbar,main{max-width:1170px}.topbar{height:84px}
+.wordmark{color:var(--ink);letter-spacing:-1.3px}.wordmark img{border:2px solid #fbf3df;border-radius:16px;box-shadow:-1px 2px 2px #61746b66}
+.topbar .tabs,.macro .switches{background:var(--ceramic);padding:6px;gap:6px;border:0;border-radius:22px;box-shadow:var(--face),var(--lift)}
+.topbar .tabs button,.topbar .tabs button[aria-pressed=true]{min-height:44px;border-radius:16px;gap:7px}
+.topbar .tabs button[aria-pressed=true],.switches button[aria-pressed=true]{color:var(--ink);background:var(--soft);box-shadow:var(--well)}
+.sculpt-icon{height:30px;width:32px;object-fit:contain;filter:drop-shadow(-1px 2px 1.4px #51645040);pointer-events:none}
+.top-actions .round,.editor .icon,.arrow:not(:disabled),.round{background:var(--ceramic);border:0;box-shadow:var(--button-lift);color:var(--ink)}
+main{padding-top:10px}
+.puppy-hero,.macro .mcard,.stats,.journal,.macro.editor,#info,.layout .dashboard,.capture,#review{background:var(--ceramic);box-shadow:var(--face),var(--lift);border:0;border-radius:28px;color:var(--ink)}
+.puppy-hero{padding:34px clamp(28px,4.4vw,56px);min-height:228px;gap:22px;margin-bottom:28px}
+.hero-copy h1{color:var(--ink);text-shadow:none}.hero-copy p{color:var(--muted)}
+.puppy-hero .add-action,.add-action,.m-action,.capture .primary,.save{color:var(--key-ink);background:var(--key);border:0;box-shadow:var(--key-lift);border-radius:16px}
+.puppy-hero .camera-action,.camera-action,.personal .camera-action,.capture .secondary{background:var(--ceramic);color:var(--ink);border:0;box-shadow:var(--button-lift);border-radius:16px}
+.day-cards{gap:26px}.macro .overview,.macro .diary{padding:23px 26px}.overview-grid{gap:20px}
+.macro-donut{filter:drop-shadow(-2px 4px 3px #6f664b40);max-width:284px}.sector:focus-visible .segment-face{stroke:#47694f;stroke-width:5px}
+.metric-focus{background:var(--soft);border-radius:19px;padding:15px;box-shadow:var(--well)}
+.macro .diary .empty-diary{display:grid;justify-items:center;gap:12px;padding:23px 0 17px;border-top:1px solid var(--line)}.empty-diary img{width:84px;height:68px;object-fit:contain;filter:drop-shadow(-2px 4px 3px #7467473d)}.empty-diary p{margin:0}
+.macro input,.macro select,.macro textarea,#review input,#review select,.picker-body,.food-picker summary{background:var(--input);border:1px solid var(--edge);box-shadow:inset -1px 2px 3px #7b735224,inset 1px -1px 2px #ffffffa6;border-radius:13px}
+.picker-body{background:var(--soft);box-shadow:var(--well);border:0}.picker-row{border-color:var(--line)}.pick-check{box-shadow:inset -1px 2px 2px #766a4526}.pin-food[aria-pressed=true]{color:var(--accent-strong)}
+#review{color:var(--ink)}#review .icon,#candidates button{background:var(--soft);color:var(--ink)}#candidates button[aria-pressed=true]{background:var(--key);color:var(--key-ink)}#review .calc{border-color:var(--line)}
+.capture .ai-title,.dashboard .cardtop,.dashboard .energy,.dashboard .energy strong,.dashboard .meal-stat small{color:var(--ink)}.dashboard .indicators{color:var(--muted)}
+.layout .dashboard .mascot-stage{background:transparent;box-shadow:none;overflow:visible}.dashboard .mascot-stage img{object-fit:contain;filter:drop-shadow(-2px 4px 2px #4d624338)}
+.stats .column i{border-radius:10px 10px 5px 5px;background:linear-gradient(90deg,#759782,#9ebda2 64%,#b5cfb5);box-shadow:-2px 3px 4px #66795b40}.stats .column:last-child i{background:linear-gradient(90deg,#b18354,#dfb574 70%,#eac794)}
+:focus-visible{outline:3px solid #287963;outline-offset:3px}
+.puppy-hero .quick-actions button:active,.add-action:active,.m-action:active,.save:active,.capture .primary:active,.capture .secondary:active,.personal .camera-action:active,.top-actions .round:active{transform:translateY(2px);box-shadow:var(--press)}
+@media(prefers-reduced-motion:no-preference){.add-action,.m-action,.camera-action,.capture .primary,.save{transition:transform 120ms ease-out,box-shadow 120ms ease-out}}
+@media(max-width:750px){
+ header .topbar{height:61px}.topbar .tabs{inset:auto 8px max(7px,env(safe-area-inset-bottom));padding:6px;gap:3px;border-radius:22px;background:var(--ceramic);box-shadow:var(--face),var(--lift)}
+ .topbar .tabs button,.topbar .tabs button[aria-pressed=true]{gap:2px;border-radius:16px}.sculpt-icon{height:26px;width:29px}
+ main{padding-top:7px}.puppy-hero{min-height:186px;padding:19px 17px 22px;gap:16px;margin-bottom:21px;border-radius:25px}
+ .hero-copy{max-width:57%}.hero-copy h1{font-size:31px}.studio-stage{inset:9px 8px 11px 62%;border-radius:47px 18px 18px 47px}
+ .studio-stage .hero-portrait{height:82%;top:6%;width:106%;right:-3%}.studio-plinth{left:8%;width:84%;bottom:11%;height:10%}
+ .puppy-hero .quick-actions{gap:10px}.puppy-hero .quick-actions button{padding:8px 11px}
+ .day-cards{gap:20px}.macro .overview,.macro .diary{border-radius:23px;padding:16px 18px}.metric-focus{padding:11px 13px}.overview-grid{gap:10px}.macro-donut{max-width:246px}
+}
+@media(prefers-reduced-motion:reduce){button{transition:none}}
+.sector-name{font-size:16px}.sector-val{font-size:18px}
+/* The chart and portrait exchange the two visual slots on the overview. */
+.hero-chart{position:absolute;inset:8px 12px 9px 57%;display:grid;place-items:center}
+.hero-chart .macro-donut{display:block;width:auto;height:100%;max-width:100%;max-height:100%;margin:0}
+.nutrition-duck{display:block;width:min(100%,284px);aspect-ratio:1;object-fit:contain;justify-self:center;border-radius:20px}
+@media(max-width:750px){
+ .puppy-hero:has(.hero-chart){display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);grid-template-areas:"copy chart" "actions chart";align-content:center;gap:9px 4px;padding:13px 12px 15px}
+ .hero-chart{grid-area:chart;position:static;align-self:center}
+ .hero-chart .macro-donut{width:100%;height:auto;max-width:235px}
+ .puppy-hero .hero-copy{grid-area:copy;max-width:100%}
+ .puppy-hero .quick-actions{grid-area:actions;flex-wrap:wrap;gap:7px}
+ .nutrition-duck{max-width:246px}
+}
+@media(max-width:465px){
+ .puppy-hero:has(.hero-chart){grid-template-areas:"copy chart" "actions actions"}
+}
+.layout .dashboard .duck-portrait{overflow:hidden;border-radius:32%;background:#a2d0ce}
+.layout .dashboard .duck-portrait img{width:100%;height:100%;object-fit:contain;filter:none}
+
+/* Keep the action and its feedback outside the four page containers. */
+.meal-fab{
+  position:fixed;z-index:6;right:max(24px,env(safe-area-inset-right));bottom:max(24px,env(safe-area-inset-bottom));
+  display:grid;place-items:center;width:56px;height:56px;padding:0;border:0;border-radius:50%;
+  background:var(--key);color:var(--key-ink);box-shadow:var(--key-lift);touch-action:manipulation
+}
+.meal-fab svg{width:25px;height:25px;pointer-events:none}
+.meal-fab:active{transform:translateY(2px);box-shadow:var(--press)}
+.meal-fab:focus-visible{outline:3px solid #335b56;outline-offset:4px}
+body:has(dialog[open]) .meal-fab,body:has(dialog[open]) .meal-toast{visibility:hidden}
+main{padding-bottom:92px}
+.meal-toast{
+  position:fixed;z-index:5;bottom:30px;right:94px;margin:0;max-width:min(390px,calc(100vw - 110px));
+  padding:12px 17px;background:var(--toast-face);border-radius:15px;box-shadow:var(--face),var(--lift);
+  font-size:14px;font-weight:750;color:var(--ink);pointer-events:none
+}
+.meal-toast:empty{display:none}
+:where(.macro,#review,#info) :is(.home-notice,.feedback,.alert,[role=alert]):not(:empty),
+.overview>p[role=status],.database-content>p[role=status]:not(:empty),#review #status:not(:empty){
+  display:block;margin:10px 0;padding:10px 14px;border-radius:14px;background:var(--soft);color:var(--ink);
+  box-shadow:inset -1px 1px 2px #ffffff28,-1px 2px 3px #364e4430;font-size:14px
+}
+.macro [role=alert]:not(:empty){border-inline-start:3px solid var(--danger)}
+.confirm-action p{color:var(--ink);font-size:16px;margin:2px 0 18px}
+.confirm-action form{display:flex;justify-content:flex-end;gap:10px}
+.confirm-delete{min-height:44px;padding:9px 18px;border-radius:14px;color:#fff8f2;background:linear-gradient(210deg,#995849,#813d34);box-shadow:inset -1px 1px 2px #ffd2b752,-1px 2px 1px #6a3229,-3px 5px 5px #4b403536}
+dialog::backdrop{background:#142a2985}
+.editor-head{border-bottom:1px solid var(--line);padding-bottom:12px}
+body .portion-meter,.dashboard .track{
+  box-sizing:border-box;position:relative;width:100%;height:13px;padding:3px;
+  border-radius:20px;background:var(--track);overflow:hidden;
+  box-shadow:inset -1px 2px 3px var(--rail-edge),inset 1px -1px 2px #ffffff69,0 1px 1px #ffffff47
+}
+.portion-meter{margin:10px 0}
+.portion-meter>span,.dashboard .track i{
+  display:block;height:100%;border-radius:20px;
+  background:linear-gradient(178deg,#ffdd8c 0%,var(--bill) 30%,#ecaf50 78%,#d3913f 100%);
+  box-shadow:inset -1px 1px 1px #fff0b9ad,-1px 1px 2px #946d3970
+}
+.dashboard .track{height:9px;padding:2px}
+.macro .sector-name,.macro .sector-val,.dial-percent{fill:#342e27}
+.topbar .tabs .sculpt-icon{width:29px;height:29px;filter:drop-shadow(-1px 2px 1px #31443d45)}
+.today-tag,.summary-head{background:var(--soft);color:var(--ink)}
+.editor .food,.detailrow,.entry,.column{font-variant-numeric:tabular-nums}
+#review .food{background:var(--surface);color:var(--ink);border:1px solid var(--line)}
+[data-theme=dark] #review .food label{color:var(--ink)}
+.personal-list li,.journal .entry{border-color:var(--line)}
+.journal .entry{color:var(--ink);background:transparent}
+:root[data-theme=dark] :is(.journal,.stats,#info){background:var(--ceramic)}
+.stats .column i{background:linear-gradient(90deg,#72aaa8,#9ed1cd 55%,#bedfdc);box-shadow:-2px 3px 4px #4b696044}
+.stats .column:last-child i{background:var(--key)}
+/* Every pose has the same viewport. Align the crest and foot plane using
+   presentation-only offsets derived from the supplied square renders. */
+.duck-window{position:relative;isolation:isolate;aspect-ratio:1;overflow:hidden;background:var(--pool)}
+.duck-figure{margin:0;text-align:center}
+.duck-figure figcaption{font-size:13px;line-height:1.4;font-weight:650;color:var(--muted);margin:8px auto 0;min-height:2.8em;text-wrap:balance}
+.overview-grid>.duck-figure{width:min(100%,284px);margin:auto}
+.overview-grid .duck-window{border-radius:24px}
+.dashboard .duck-figure figcaption{max-width:270px}
+.portion-actions{display:flex;align-items:center;flex-wrap:wrap;gap:16px}
+#portion-editor{max-width:min(380px,calc(100vw - 24px))}
+#portion-editor .portion-food-name{margin:12px 0;color:var(--ink);font-weight:800}
+#portion-editor .portion-actions{margin-top:16px;justify-content:flex-end}
+#portion-editor .m-action{margin:0}
+.detailrow .portion-detail{text-align:right}
+.detailrow .portion-detail small,.detailrow .portion-detail button{display:block;margin-left:auto}
+.duck-window::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;box-shadow:inset -1px 2px 4px #486f6d24,inset 1px -1px 2px #ffffff54}
+.duck-window .nutrition-duck,.dashboard .duck-window #journal-duck{
+  display:block;position:static;width:100%;height:100%;max-width:none;object-fit:contain;
+  border-radius:0;transform-origin:50% 0;transform:translateY(var(--pose-y,0%)) scale(var(--pose-size,1))
+}
+[data-pose=hungry]{--pose-size:1.021;--pose-y:-.16%}
+[data-pose=fed]{--pose-size:1.005;--pose-y:-.87%}
+[data-pose=proud]{--pose-size:1.037;--pose-y:-.71%}
+[data-pose=overfull]{--pose-size:1.021;--pose-y:-1.01%}
+[data-pose=short]{--pose-size:.957;--pose-y:1.12%}
+[data-pose=relaxed]{--pose-size:.990;--pose-y:.07%}
+@media(max-width:750px){
+  :root{--dock-clearance:calc(80px + env(safe-area-inset-bottom))}
+  main{padding-bottom:calc(var(--dock-clearance) + 70px)}
+  .meal-fab{width:52px;height:52px;right:max(15px,env(safe-area-inset-right));bottom:var(--dock-clearance)}
+  .meal-toast{right:77px;bottom:calc(var(--dock-clearance) + 4px);max-width:calc(100vw - 92px)}
+  .overview-grid>.duck-figure{max-width:246px}
+  .topbar .tabs .sculpt-icon{width:26px;height:26px}
+}
+@media(prefers-reduced-motion:no-preference){.meal-fab{transition:transform 140ms ease-out,box-shadow 140ms ease-out}}
+@media(prefers-reduced-motion:reduce){.meal-fab:active{transform:none}}
+@media(max-width:465px){
+  .puppy-hero:has(.hero-chart){grid-template-columns:minmax(0,.84fr) minmax(0,1.16fr);grid-template-areas:"copy chart" "actions chart";align-items:center;align-content:center;min-height:0;gap:8px 3px}
+  .puppy-hero .hero-copy{align-self:end}.puppy-hero .hero-copy h1{font-size:clamp(22px,6.6vw,30px)}
+  .puppy-hero .quick-actions{align-self:start}
+  .puppy-hero .hero-chart{align-self:center}
+}
+/* On phones the plus has its own slot beside the dock, clear of the journal. */
+@media(max-width:750px){
+  header .topbar .tabs{right:calc(72px + env(safe-area-inset-right));gap:1px}
+  .topbar .tabs button,.topbar .tabs button[aria-pressed=true]{white-space:normal;line-height:1.15}
+  .meal-fab{right:calc(9px + env(safe-area-inset-right));bottom:calc(10px + env(safe-area-inset-bottom))}
+  .meal-toast{right:12px;bottom:var(--dock-clearance);max-width:calc(100vw - 24px)}
+  main{padding-bottom:calc(var(--dock-clearance) + 12px)}
+}

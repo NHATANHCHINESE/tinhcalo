@@ -1,0 +1,69 @@
+/* Colours taken from the dog's coat, ears and blue-green backdrop. */
+:root{
+  --page:#f8f6ef;--surface:#fffefa;--soft:#ecf2ed;--ink:#253b37;--muted:#586b64;
+  --line:#d9e0d6;--accent:#30685e;--accent-strong:#164f48;--input:#fffef9;
+  --edge:#a7bcb1;--goal:#e5efdf;--shadow:0 5px 18px #36443e0a;--sand:#eee4d3;--ear:#986b4a
+}
+:root[data-theme=dark]{
+  --page:#182a29;--surface:#223531;--soft:#304740;--ink:#f4f2e7;--muted:#bfd0c6;
+  --line:#455b50;--accent:#abd9c7;--accent-strong:#bce4d5;--edge:#759a89;
+  --input:#f7faf1;--goal:#354d43;--sand:#3e4638;--ear:#dfbda0
+}
+body{background:var(--page)}header{border-color:var(--line)}
+.topbar,main{max-width:1180px}.topbar{height:74px;gap:18px}
+.wordmark{letter-spacing:-1.2px;color:var(--ink);font-size:24px}
+.wordmark img{width:40px;height:40px;object-fit:cover;border-radius:14px;margin-right:2px}
+.topbar .tabs{border:0;margin:0;gap:3px;align-items:center;background:var(--soft);border-radius:16px;padding:4px}
+.topbar .tabs button,.topbar .tabs button[aria-pressed=true]{min-height:42px;display:flex;align-items:center;justify-content:center;gap:7px;border:0;border-radius:12px;font-weight:800;font-size:14px;padding:7px 12px}
+.topbar .tabs button[aria-pressed=true]{background:var(--surface);color:var(--accent-strong);box-shadow:0 1px 4px #153a3019}
+.tabs svg{width:17px;height:17px}.top-actions .round{background:transparent;border:1px solid var(--line);width:44px;height:44px}
+main{padding-top:22px}.macro .mcard,.journal,.stats,.editor{border-radius:22px;border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow)}
+.puppy-hero{position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:flex-start;justify-content:center;flex-direction:column;gap:18px;margin:0 0 18px;padding:32px clamp(24px,4.5vw,58px);min-height:242px;border-radius:25px;background:linear-gradient(105deg,#d6e9df 2%,#beded7 46%,#80b7bf 78%,#79aeb7);color:#163e39}
+.hero-portrait{position:absolute;z-index:-1;right:4%;height:118%;top:-11%;width:39%;object-fit:contain;mask-image:linear-gradient(to right,transparent,#000 25%,#000 75%,transparent)}
+.hero-copy,.puppy-hero .quick-actions{position:relative}
+.hero-copy h1{max-width:19ch;font-size:clamp(32px,4.5vw,57px);line-height:1.07;margin:3px 0 0;letter-spacing:-2.8px;color:#163e39;font-weight:850}
+.hero-copy p{font-size:15px;color:#315952;font-weight:750}
+.puppy-hero .add-action,.puppy-hero .camera-action{min-height:46px;padding:10px 17px;border-radius:13px;font-weight:850}
+.puppy-hero .add-action{background:#184d46;color:#fffdf4}
+.puppy-hero .camera-action{background:#fffdf2;color:#2c4e45;border-color:#c7d9cd}
+.day-cards{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(250px,1fr);align-items:start;gap:17px}
+.macro .overview,.macro .diary{padding:19px 22px;margin:0}
+.overview-grid{grid-template-columns:minmax(192px,1.13fr) minmax(160px,1fr);gap:16px}
+.macro-donut{max-width:300px}.sector-name,.sector-val,.dial-percent{fill:#303d32}.dial-percent{font:850 29px Nunito,system-ui,sans-serif;letter-spacing:-1px}
+.focus-amount strong{color:var(--accent-strong)}.focus-label{font-size:13px}
+.macro .diary .empty-diary{border-top:1px solid var(--line);padding:16px 0 3px;margin:6px 0}
+.macro .section-head h2,.journal h2,.stats h2,.editor-head h2{letter-spacing:-.8px}
+.personal>.daily-heading{padding:16px 0 22px}
+.macro .switches button[aria-pressed=true],.personal .camera-action{color:var(--accent-strong)}
+.database summary,.remove-food,.link-action{color:var(--accent-strong)}
+.macro .pick-food[aria-pressed=true]{background:var(--soft)}
+.macro .food-item details[open]{background:var(--soft);border-radius:12px;padding:0 9px}
+.macro input,.macro select,.macro textarea,.food-picker summary{color:#283f37}
+.dash-calendar,.datebar{color:var(--ink)}
+.layout .dashboard{background:#bedbd4;color:#194a40;border-color:#a6c7bb}
+.dashboard .energy,.dashboard .energy strong,.dashboard .indicators,.dashboard .meal-stat small{color:#214b43}
+.dashboard .query,.dashboard .track{background:#9cc5b6;color:#244e42}.dashboard .track i{background:#2e7667}
+.dashboard .mascot-stage{width:122px;height:122px;aspect-ratio:auto;margin:10px auto;border-radius:50%;overflow:hidden;background:#80b6bf}
+.dashboard .mascot-stage img{position:static;width:100%;height:100%;transform:none;object-fit:cover;object-position:center 22%}
+.capture,#review{background:#234c49;color:#fffdf5}.ai-title{color:#c2e7d9}.capture .primary,.save{background:#edf5df;color:#23483a}.capture .secondary,#review .icon,#candidates button{background:#395f58;color:white}
+#candidates button[aria-pressed=true]{background:#c8e8d9;color:#21473c}.stats .column i{background:#80b6aa}.stats .column:last-child i{background:#ba8969}
+footer{margin-top:9px}.wordmark img,.hero-portrait{user-select:none}
+@media(max-width:900px){.day-cards{grid-template-columns:1fr}.overview-grid{max-width:660px}.puppy-hero{min-height:196px}.topbar{gap:8px}.topbar .tabs button{padding:7px 9px}}
+@media(max-width:750px){
+ main{padding-top:12px;padding-bottom:calc(84px + env(safe-area-inset-bottom))}.topbar{height:57px}
+ .wordmark{font-size:22px}.wordmark img{height:36px;width:36px}
+ .topbar .tabs{position:fixed;inset:auto 0 0;z-index:5;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-radius:0;border-top:1px solid var(--line);background:var(--surface);padding:5px 5px calc(5px + env(safe-area-inset-bottom));box-shadow:0 -3px 16px #23463508}
+ .topbar .tabs button,.topbar .tabs button[aria-pressed=true]{flex-direction:column;gap:3px;padding:5px 1px;min-height:47px;font-size:11.5px;line-height:1.2}
+ .topbar .tabs button[aria-pressed=true]{background:var(--soft);box-shadow:none}.tabs svg{width:19px;height:19px}
+ .puppy-hero{min-height:185px;border-radius:19px;padding:18px 15px;gap:16px;margin-bottom:12px}
+ .hero-copy{max-width:63%}.hero-copy h1{font-size:33px;letter-spacing:-1.6px;max-width:10ch}.hero-copy p{font-size:12px}
+ .hero-portrait{right:0;top:0;height:100%;width:43%;object-fit:cover;object-position:55% 30%;mask-image:linear-gradient(to right,transparent,#000 22%)}
+ .puppy-hero .quick-actions{width:auto;gap:6px}.puppy-hero .quick-actions button{flex:none;min-height:44px;font-size:14px;padding:8px 11px}
+ .day-cards{gap:12px}.macro .overview,.macro .diary{padding:13px 15px;border-radius:18px}
+ .overview-grid{grid-template-columns:1fr;gap:4px}.macro-donut{max-width:255px}
+ .personal>.daily-heading{padding:7px 0 14px}
+}
+@media(min-width:500px) and (max-width:750px){.overview-grid{grid-template-columns:1fr 1fr}.hero-portrait{object-fit:contain}.hero-copy h1{max-width:none}}
+@media(prefers-reduced-motion:no-preference){button{transition:background-color .16s ease,box-shadow .16s ease}button:active{transform:translateY(1px)}}
+.hero-copy h1{text-wrap:balance}
+@media(min-width:751px){.hero-portrait{width:auto;right:12%;mask-image:linear-gradient(to right,transparent,#000 13%,#000 87%,transparent)}}
